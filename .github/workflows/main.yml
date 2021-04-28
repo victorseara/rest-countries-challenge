@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: '14'
 
       - name: Checkout branch
         uses: actions/checkout@v2
@@ -19,8 +19,17 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Run tests
-        run: CI=true yarn test --silent
+      - name: Tests
+        run: CI=true yarn test --coverage --silent
+
+      - name: Update coverage badge
+        run: yarn make-coverage-badge
+
+      - name: Commit changed files
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 👷‍♀️ ci changes
+          commit_options: '--no-verify --signoff'
 
       - name: Build
         run: yarn build
