@@ -17,13 +17,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn
 
       - name: Run tests
-        run: npm run tests --watchAll --silent
+        run: yarn test --watchAll --silent
 
       - name: Build
-        run: npm run build
+        run: yarn build
 
       - name: Deploy
-        run: npm run deploy
+        run: yarn deploy
