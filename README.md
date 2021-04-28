@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Getting Started with Create React
+
+[![CI](https://github.com/victorseara/countries-rest-api-with-theme-switcher/actions/workflows/main.yml/badge.svg)](https://github.com/victorseara/countries-rest-api-with-theme-switcher/actions/workflows/main.yml)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
