@@ -19,9 +19,11 @@
     "airbnb/hooks",
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
   "rules": {
+    "prettier/prettier": ["error"],
     "import/prefer-default-export": "off",
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
