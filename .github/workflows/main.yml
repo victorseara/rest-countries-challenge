@@ -20,7 +20,7 @@ jobs:
         run: yarn
 
       - name: Run tests
-        run: yarn test --watchAll --silent
+        run: CI=true yarn test --silent
 
       - name: Build
         run: yarn build
