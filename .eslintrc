@@ -22,6 +22,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
+  "ignorePatterns": ["/*.*"],
   "rules": {
     "prettier/prettier": ["error"],
     "import/prefer-default-export": "off",
