@@ -2,7 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  body {
+    @apply w-screen h-screen bg-light-gray flex justify-center dark:bg-dark-blue;
+  }
+}
+@layer components {
+  .input-base {
+    @apply text-base rounded-md shadow-md w-full h-full py-8 font-semibold;
+  }
+
+  .input-focus {
+    @apply focus:shadow-lg focus:outline-none;
+  }
+  .input-light {
+    @apply placeholder-gray-500 focus:border-gray-300 text-very-dark-blue;
+  }
+  .input-dark {
+    @apply dark:bg-dark-blue dark:placeholder-gray-200 focus:border-gray-800 dark:text-white;
+  }
+}
+
+#root {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 2rem;
 }
