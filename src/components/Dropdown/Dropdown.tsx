@@ -9,77 +9,109 @@ const Dropdown = () => {
     <>
       <div className="group w-full h-12 flex items-center text-gray-500 dark:text-gray-200">
         <button
-          className="input-base input-focus input-light input-dark flex items-center justify-between px-4"
+          id="dropdown-button"
+          className="input-base input-light input-dark flex items-center justify-between px-4 focus:active"
           type="button"
-          onClick={() => setIsOpen(prevstate => !prevstate)}
+          onBlur={() => {
+            document.getElementById('option-list')?.classList.remove('active');
+            setIsOpen(false);
+          }}
+          onClick={() => {
+            document.getElementById('option-list')?.classList.add('active');
+            setIsOpen(prev => !prev);
+          }}
         >
           <span>{value || 'Filter by Region'}</span>
           {isOpen ? <ChevronUp /> : <ChevronDown />}
         </button>
       </div>
       <div style={{ display: !isOpen ? 'none' : 'unset' }}>
-        <ul className="dark:bg-common-blue dark:text-white shadow-md mt-4 rounded-md cursor-pointer">
-          <li className="py-2 px-4 hover:bg-very-dark-blue focus:bg-very-dark-blue">
-            <button
-              className="w-full flex"
-              onClick={() => {
-                setValue('Africa');
-                setIsOpen(false);
-              }}
-              type="button"
-            >
-              Africa
-            </button>
-          </li>
-          <li className="py-2 px-4 hover:bg-very-dark-blue focus:bg-very-dark-blue">
-            <button
-              className="w-full flex"
-              onClick={() => {
-                setValue('America');
-                setIsOpen(false);
-              }}
-              type="button"
-            >
-              America
-            </button>
-          </li>
-          <li className="py-2 px-4 hover:bg-very-dark-blue focus:bg-very-dark-blue">
-            <button
-              className="w-full flex"
-              onClick={() => {
-                setValue('Asia');
-                setIsOpen(false);
-              }}
-              type="button"
-            >
-              Asia
-            </button>
-          </li>
-          <li className="py-2 px-4 hover:bg-very-dark-blue focus:bg-very-dark-blue">
-            <button
-              className="w-full flex"
-              onClick={() => {
-                setValue('Europe');
-                setIsOpen(false);
-              }}
-              type="button"
-            >
-              Europe
-            </button>
-          </li>
-          <li className="py-2 px-4 hover:bg-very-dark-blue focus:bg-very-dark-blue">
-            <button
-              className="w-full flex"
-              onClick={() => {
-                setValue('Oceania');
-                setIsOpen(false);
-              }}
-              type="button"
-            >
-              Oceania
-            </button>
-          </li>
-        </ul>
+        <div
+          id="option-list"
+          role="menu"
+          className="dark:bg-common-blue dark:text-white shadow-md rounded-md cursor-pointer mt-6"
+        >
+          <div
+            role="menuitem"
+            id="first-option"
+            tabIndex={0}
+            onKeyDown={() => {
+              setValue('Africa');
+              setIsOpen(false);
+            }}
+            onClick={() => {
+              setValue('Africa');
+              setIsOpen(false);
+            }}
+            className="py-2 px-4 hover:bg-gray-200 dark:hover:bg-dark-hover"
+          >
+            Africa
+          </div>
+          <div
+            role="menuitem"
+            id="first-option"
+            tabIndex={0}
+            onKeyDown={() => {
+              setValue('America');
+              setIsOpen(false);
+            }}
+            onClick={() => {
+              setValue('America');
+              setIsOpen(false);
+            }}
+            className="py-2 px-4 hover:bg-gray-200 dark:hover:bg-dark-hover"
+          >
+            America
+          </div>
+          <div
+            role="menuitem"
+            id="first-option"
+            tabIndex={0}
+            onKeyDown={() => {
+              setValue('Asia');
+              setIsOpen(false);
+            }}
+            onClick={() => {
+              setValue('Asia');
+              setIsOpen(false);
+            }}
+            className="py-2 px-4 hover:bg-gray-200 dark:hover:bg-dark-hover"
+          >
+            Asia
+          </div>
+          <div
+            role="menuitem"
+            id="first-option"
+            tabIndex={0}
+            onKeyDown={() => {
+              setValue('Europe');
+              setIsOpen(false);
+            }}
+            onClick={() => {
+              setValue('Europe');
+              setIsOpen(false);
+            }}
+            className="py-2 px-4 hover:bg-gray-200 dark:hover:bg-dark-hover "
+          >
+            Europe
+          </div>
+          <div
+            role="menuitem"
+            id="first-option"
+            tabIndex={0}
+            onKeyDown={() => {
+              setValue('Oceania');
+              setIsOpen(false);
+            }}
+            onClick={() => {
+              setValue('Oceania');
+              setIsOpen(false);
+            }}
+            className="py-2 px-4 hover:bg-gray-200 dark:hover:bg-dark-hover "
+          >
+            Oceania
+          </div>
+        </div>
       </div>
     </>
   );
