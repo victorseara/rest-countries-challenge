@@ -19,12 +19,11 @@
     @apply placeholder-gray-500 focus:border-gray-300 text-very-dark-blue;
   }
   .input-dark {
-    @apply dark:bg-dark-blue dark:placeholder-gray-200 focus:border-gray-800 dark:text-white;
+    @apply dark:bg-common-blue dark:placeholder-gray-200 focus:border-gray-800 dark:text-white;
   }
 }
 
 #root {
   width: 100%;
-  max-width: 1440px;
-  padding: 0 2rem;
+  height: 100%;
 }
