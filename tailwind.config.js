@@ -12,6 +12,7 @@ module.exports = {
         'spin-demo': 'spin 20s linear infinite',
       },
       colors: {
+        'dark-hover': '#3E505F',
         'common-blue': 'hsl(209, 23%, 22%)',
         'dark-blue': 'hsl(207, 26%, 17%)',
         'very-dark-blue': 'hsl(200, 15%, 8%)',
