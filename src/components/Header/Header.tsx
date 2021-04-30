@@ -15,7 +15,7 @@ const Header = ({ title, toggleTheme }: HeaderProps) => {
           className="flex cursor-pointer hover:opacity-80"
           onClick={toggleTheme}
         >
-          <Moon />
+          <Moon fill="#fff" />
           <span className="ml-2 font-semibold hidden sm:inline">Dark mode</span>
         </button>
       </div>
