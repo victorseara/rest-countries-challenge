@@ -12,7 +12,7 @@ interface CardProps {
 
 const Card = ({ country }: CardProps) => {
   return (
-    <div className="flex flex-col dark:bg-common-blue rounded-md shadow-md dark:text-white text-very-dark-blue min-w-min">
+    <div className="flex flex-col dark:bg-common-blue rounded-md shadow-md dark:text-white text-very-dark-blue">
       <img
         src={country.flag}
         alt={`Flag of ${country.name}`}
