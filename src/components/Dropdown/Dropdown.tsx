@@ -1,119 +1,36 @@
-import { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'react-feather';
+import { ChevronDown } from 'react-feather';
 
-const Dropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState('');
+type Options = string[];
 
+interface DropdownProps {
+  name?: string;
+  placeholder?: string;
+  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  options: Options;
+}
+
+const Dropdown = ({ name, placeholder, onChange, options }: DropdownProps) => {
   return (
-    <>
-      <div className="group w-full h-12 flex items-center text-gray-500 dark:text-gray-200">
-        <button
-          id="dropdown-button"
-          className="input-base input-light input-dark flex items-center justify-between px-4 focus:active"
-          type="button"
-          onBlur={() => {
-            document.getElementById('option-list')?.classList.remove('active');
-            setIsOpen(false);
-          }}
-          onClick={() => {
-            document.getElementById('option-list')?.classList.add('active');
-            setIsOpen(prev => !prev);
-          }}
-        >
-          <span>{value || 'Filter by Region'}</span>
-          {isOpen ? <ChevronUp /> : <ChevronDown />}
-        </button>
-      </div>
-      <div style={{ display: !isOpen ? 'none' : 'unset' }}>
-        <div
-          id="option-list"
-          role="menu"
-          className="dark:bg-common-blue dark:text-white shadow-md rounded-md cursor-pointer mt-6"
-        >
-          <div
-            role="menuitem"
-            id="first-option"
-            tabIndex={0}
-            onKeyDown={() => {
-              setValue('Africa');
-              setIsOpen(false);
-            }}
-            onClick={() => {
-              setValue('Africa');
-              setIsOpen(false);
-            }}
-            className="py-2 px-4 hover:bg-gray-200 dark:hover:bg-dark-hover"
-          >
-            Africa
-          </div>
-          <div
-            role="menuitem"
-            id="first-option"
-            tabIndex={0}
-            onKeyDown={() => {
-              setValue('America');
-              setIsOpen(false);
-            }}
-            onClick={() => {
-              setValue('America');
-              setIsOpen(false);
-            }}
-            className="py-2 px-4 hover:bg-gray-200 dark:hover:bg-dark-hover"
-          >
-            America
-          </div>
-          <div
-            role="menuitem"
-            id="first-option"
-            tabIndex={0}
-            onKeyDown={() => {
-              setValue('Asia');
-              setIsOpen(false);
-            }}
-            onClick={() => {
-              setValue('Asia');
-              setIsOpen(false);
-            }}
-            className="py-2 px-4 hover:bg-gray-200 dark:hover:bg-dark-hover"
-          >
-            Asia
-          </div>
-          <div
-            role="menuitem"
-            id="first-option"
-            tabIndex={0}
-            onKeyDown={() => {
-              setValue('Europe');
-              setIsOpen(false);
-            }}
-            onClick={() => {
-              setValue('Europe');
-              setIsOpen(false);
-            }}
-            className="py-2 px-4 hover:bg-gray-200 dark:hover:bg-dark-hover "
-          >
-            Europe
-          </div>
-          <div
-            role="menuitem"
-            id="first-option"
-            tabIndex={0}
-            onKeyDown={() => {
-              setValue('Oceania');
-              setIsOpen(false);
-            }}
-            onClick={() => {
-              setValue('Oceania');
-              setIsOpen(false);
-            }}
-            className="py-2 px-4 hover:bg-gray-200 dark:hover:bg-dark-hover "
-          >
-            Oceania
-          </div>
-        </div>
-      </div>
-    </>
+    <label
+      htmlFor="Filter by Region"
+      className="relative flex items-center text-gray-500 dark:text-gray-200 h-14 rounded-md shadow-md"
+    >
+      <ChevronDown className="absolute my-auto right-0 mx-4" />
+      <select
+        onChange={onChange}
+        name={name}
+        className="w-full h-full dark:bg-common-blue px-8 bg-white rounded-md font-semibold focus:outline-none focus:ring-inset focus:ring-dark-hover focus:ring-1"
+      >
+        <option selected disabled hidden className="font-semibold">
+          {placeholder || 'Select an option'}
+        </option>
+        {options.map(item => (
+          <option key={item} className="font-semibold">
+            {item}
+          </option>
+        ))}
+      </select>
+    </label>
   );
 };
 
