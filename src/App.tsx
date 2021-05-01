@@ -92,9 +92,9 @@ function App() {
         id="fixed-content"
       >
         <Header title="Where in the world ?" toggleTheme={toggleTheme} />
-        <div className="h-full w-10/12 max-w-screen-2xl flex flex-col my-20 self-center">
-          <div className="flex flex-col sm:justify-between sm:flex-row h-16">
-            <div className="w-12/12 sm:w-1/3" style={{ minWidth: '320px' }}>
+        <div className="h-full w-10/12 max-w-screen-2xl flex flex-col my-14 self-center">
+          <div className="flex justify-between flex-wrap">
+            <div className="w-12/12 sm:w-1/3 " style={{ minWidth: '320px' }}>
               <SearchBox
                 placeholder="Search for a country..."
                 value={query}
@@ -102,7 +102,7 @@ function App() {
               />
             </div>
             <div
-              className="mt-12 w-9/12 sm:mt-0 sm:w-2/12"
+              className="w-6/12 sm:w-2/12 mt-10 sm:mt-0"
               style={{ minWidth: '200px' }}
             >
               <Dropdown
@@ -115,7 +115,7 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="h-full w-10/12 max-w-screen-2xl flex flex-col">
+      <div className="w-10/12 max-w-screen-2xl flex flex-col">
         <main
           id="main-content"
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-20 grid-rows-1"
