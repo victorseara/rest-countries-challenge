@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply w-screen h-screen bg-light-gray flex justify-center dark:bg-dark-blue;
-  }
-}
 @layer components {
   .input-base {
     @apply text-base rounded-md shadow-md w-full h-full py-8 font-semibold;
@@ -29,11 +24,6 @@
   .input-dark {
     @apply dark:bg-common-blue dark:placeholder-gray-300  dark:text-white;
   }
-}
-
-#root {
-  width: 100%;
-  height: 100%;
 }
 
 select {

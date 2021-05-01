@@ -28,5 +28,5 @@ module.exports = {
       animation: ['focus'],
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-debug-screens')],
 };

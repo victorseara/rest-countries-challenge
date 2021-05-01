@@ -63,7 +63,8 @@
     "make-coverage-badge": "^1.2.0",
     "postcss": "^7",
     "prettier": "^2.2.1",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "tailwindcss-debug-screens": "^2.0.0"
   },
   "jest": {
     "coverageReporters": [
