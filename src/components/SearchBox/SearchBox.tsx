@@ -10,10 +10,10 @@ type SearchBoxProps = Omit<
 
 const SearchBox = (props: SearchBoxProps) => {
   return (
-    <div className="relative group w-full h-10 bg-red-200 flex items-center text-gray-500 dark:text-gray-200">
+    <div className="relative w-full h-10 flex items-center text-gray-500 dark:text-gray-200">
       <Search className="absolute my-auto mx-4" />
       <input
-        className="input-base focus:active input-light input-dark pl-16"
+        className="input-base input-light input-dark pl-16 focus:outline-none focus:ring-inset focus:ring-dark-hover focus:ring-1"
         type="text"
         aria-label="Search"
         placeholder="Search ..."
