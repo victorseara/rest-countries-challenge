@@ -6,6 +6,7 @@ import SearchBox from './components/SearchBox/SearchBox';
 import mock from './components/Card/mock.json';
 
 const countries = mock as CountryGeneralInformation[];
+const regionOptions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
 
 type UserTheme = 'light' | 'dark';
 
@@ -65,7 +66,10 @@ function App() {
               <SearchBox placeholder="Search for a country..." />
             </div>
             <div className="mt-12 w-8/12 sm:mt-0 sm:w-2/12">
-              <Dropdown />
+              <Dropdown
+                options={regionOptions}
+                placeholder="Filter by Region"
+              />
             </div>
           </div>
         </div>
