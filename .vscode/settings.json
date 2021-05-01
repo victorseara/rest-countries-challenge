@@ -2,7 +2,8 @@
   "conventionalCommits.scopes": [
     "config",
     "COUNTRIES-5",
-    "COUNTRIES-6"
+    "COUNTRIES-6",
+    "COUNTRIES-7"
   ],
   "css.customData": [".vscode/css_custom_data.json"]
 }
