@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
-import Card, { CountryGeneralInformation } from './components/Card/Card';
+import { CountryGeneralInformation } from './components/Card/Card';
 import Dropdown from './components/Dropdown/Dropdown';
 import Header from './components/Header/Header';
 import SearchBox from './components/SearchBox/SearchBox';
 import mock from './components/Card/mock.json';
+import { GridList } from './components/GridList/GridList';
 
 const countriesMock = mock as CountryGeneralInformation[];
 const regionOptions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
@@ -83,12 +84,9 @@ function App() {
   const updateQuery = useCallback((value: string) => setQuery(value), []);
 
   return (
-    <div
-      className="h-full flex flex-col items-center"
-      style={{ overflowX: 'clip' }}
-    >
+    <div className="flex flex-col items-center bg-light-gray dark:bg-dark-blue w-full">
       <div
-        className="w-full flex flex-col fixed dark:bg-dark-blue bg-light-gray"
+        className="flex flex-col w-full fixed top-0 left-0 dark:bg-dark-blue bg-light-gray"
         id="fixed-content"
       >
         <Header title="Where in the world ?" toggleTheme={toggleTheme} />
@@ -115,14 +113,9 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="w-10/12 max-w-screen-2xl flex flex-col">
-        <main
-          id="main-content"
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-20 grid-rows-1"
-        >
-          {countries.map(country => (
-            <Card country={country} key={country.name} />
-          ))}
+      <div className="w-10/12 max-w-screen-2xl flex flex-col h-full">
+        <main id="main-content" className="flex-1">
+          <GridList countries={countries} />
         </main>
       </div>
     </div>
