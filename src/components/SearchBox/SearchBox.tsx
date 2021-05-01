@@ -1,23 +1,35 @@
+import { useEffect, useState } from 'react';
 import { Search } from 'react-feather';
 
-type SearchBoxProps = Omit<
-  React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  >,
-  'className' | 'type'
->;
+type SearchBoxProps = {
+  placeholder?: string;
+  value?: string;
+  onChange: (value: string) => void;
+};
 
-const SearchBox = (props: SearchBoxProps) => {
+const SearchBox = ({ placeholder, value, onChange }: SearchBoxProps) => {
+  const [localValue, setLocalValue] = useState(value || '');
+
+  useEffect(() => {
+    const debounce = setTimeout(() => {
+      onChange(localValue);
+    }, 300);
+
+    return () => {
+      clearTimeout(debounce);
+    };
+  }, [localValue, onChange]);
+
   return (
-    <div className="relative w-full h-10 flex items-center text-gray-500 dark:text-gray-200">
+    <div className="relative w-full h-full flex items-center text-gray-500 dark:text-gray-200">
       <Search className="absolute my-auto mx-4" />
       <input
-        className="input-base input-light input-dark pl-16 focus:outline-none focus:ring-inset focus:ring-dark-hover focus:ring-1"
+        className="text-base rounded-md shadow-md w-full h-full py-8 font-semibold input-light input-dark pl-16 focus:outline-none focus:ring-inset focus:ring-dark-hover focus:ring-1"
         type="text"
         aria-label="Search"
-        placeholder="Search ..."
-        {...props}
+        onChange={e => setLocalValue(e.target.value)}
+        value={localValue}
+        placeholder={placeholder || 'Search ...'}
       />
     </div>
   );
