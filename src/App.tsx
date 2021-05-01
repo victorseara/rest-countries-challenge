@@ -39,19 +39,42 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    const fixedContent = document.getElementById('fixed-content');
+    const fixedContentHeight = (fixedContent && fixedContent.offsetHeight) || 0;
+
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+      mainContent.style.marginTop = `${fixedContentHeight}px`;
+    }
+  });
+
   return (
-    <div className="h-full flex flex-col items-center overflow-x-hidden">
-      <Header title="Where in the world ?" toggleTheme={toggleTheme} />
-      <div className="h-full w-10/12 max-w-screen-2xl flex flex-col">
-        <div className="flex flex-col sm:justify-between sm:flex-row">
-          <div className="w-12/12 sm:w-1/2">
-            <SearchBox placeholder="Search for a country..." />
-          </div>
-          <div className="mt-12 w-8/12 sm:mt-0 sm:w-2/12">
-            <Dropdown />
+    <div
+      className="h-full flex flex-col items-center"
+      style={{ overflowX: 'clip' }}
+    >
+      <div
+        className="w-full flex flex-col fixed dark:bg-dark-blue bg-light-gray"
+        id="fixed-content"
+      >
+        <Header title="Where in the world ?" toggleTheme={toggleTheme} />
+        <div className="h-full w-10/12 max-w-screen-2xl flex flex-col my-20 self-center">
+          <div className="flex flex-col sm:justify-between sm:flex-row">
+            <div className="w-12/12 sm:w-1/3">
+              <SearchBox placeholder="Search for a country..." />
+            </div>
+            <div className="mt-12 w-8/12 sm:mt-0 sm:w-2/12">
+              <Dropdown />
+            </div>
           </div>
         </div>
-        <main className="mt-12 flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-20">
+      </div>
+      <div className="h-full w-10/12 max-w-screen-2xl flex flex-col">
+        <main
+          id="main-content"
+          className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-20"
+        >
           {countries.map(country => (
             <Card country={country} key={country.name} />
           ))}
