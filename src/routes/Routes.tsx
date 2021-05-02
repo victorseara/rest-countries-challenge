@@ -40,7 +40,7 @@ const Routes = () => {
         <div className="h-full w-10/12 max-w-screen-2xl flex flex-col self-center mt-20">
           <main className="h-full">
             <Route path="/" exact component={Home} />
-            <Route path="/country" component={CountryDetails} />
+            <Route path="/:countryCode" component={CountryDetails} />
           </main>
         </div>
       </div>

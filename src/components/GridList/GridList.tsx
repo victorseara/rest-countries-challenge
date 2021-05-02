@@ -1,7 +1,8 @@
-import Card, { CountryGeneralInformation } from '../Card/Card';
+import { Country } from 'api/countries/types/Country';
+import Card from '../Card/Card';
 
 interface GridListProps {
-  countries: CountryGeneralInformation[];
+  countries: Country[];
 }
 
 const EmptyState = () => (

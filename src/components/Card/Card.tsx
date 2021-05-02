@@ -1,15 +1,8 @@
+import { Country } from 'api/countries/types/Country';
 import { useHistory } from 'react-router-dom';
 
-export interface CountryGeneralInformation {
-  flag: string;
-  name: string;
-  capital: string;
-  region: string;
-  population: number;
-}
-
 interface CardProps {
-  country: CountryGeneralInformation;
+  country: Country;
 }
 
 const Card = ({ country }: CardProps) => {
@@ -19,7 +12,7 @@ const Card = ({ country }: CardProps) => {
     <div
       className="flex flex-col dark:bg-common-blue rounded-md shadow-lg dark:text-white text-very-dark-blue cursor-pointer"
       role="presentation"
-      onClick={() => history.push('/country', country)}
+      onClick={() => history.push(`/${country.alpha3Code}`)}
     >
       <img
         src={country.flag}

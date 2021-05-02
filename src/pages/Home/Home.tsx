@@ -1,19 +1,22 @@
-import { useCallback, useState } from 'react';
-import { CountryGeneralInformation } from '../../components/Card/Card';
+import { useCallback, useEffect, useState } from 'react';
+import { Country } from 'api/countries/types/Country';
+import { getAllCountries } from 'api/countries/countriesApi';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import SearchBox from '../../components/SearchBox/SearchBox';
-import mock from '../../components/Card/mock.json';
 import { GridList } from '../../components/GridList/GridList';
 
-const countriesMock = mock as CountryGeneralInformation[];
 const regionOptions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
-const displayCountries = (filterByRegion?: string, query?: string) => {
+const displayCountries = (
+  countries: Country[],
+  filterByRegion?: string,
+  query?: string
+) => {
   if (!filterByRegion && !query) {
-    return countriesMock;
+    return countries;
   }
 
-  const result = countriesMock.filter(item => {
+  const result = countries.filter(item => {
     if (filterByRegion && item.region === filterByRegion) {
       if (!query) {
         return true;
@@ -32,15 +35,23 @@ const displayCountries = (filterByRegion?: string, query?: string) => {
 };
 
 function Home() {
+  const [countries, setCountries] = useState<Country[]>([]);
   const [query, setQuery] = useState('');
   const [filterByRegion, setFilterByRegion] = useState('');
 
-  const countries =
+  const countriesToShow =
     filterByRegion || query
-      ? displayCountries(filterByRegion, query)
-      : countriesMock;
+      ? displayCountries(countries, filterByRegion, query)
+      : countries;
 
   const updateQuery = useCallback((value: string) => setQuery(value), []);
+
+  useEffect(() => {
+    const fetch = async () => {
+      await getAllCountries().then(data => setCountries(data));
+    };
+    fetch();
+  }, []);
 
   return (
     <div className="flex flex-col">
@@ -70,7 +81,7 @@ function Home() {
         </div>
       </div>
       <div className="mt-52 sm:mt-36">
-        <GridList countries={countries} />
+        <GridList countries={countriesToShow} />
       </div>
     </div>
   );

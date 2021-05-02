@@ -1,3 +1,5 @@
+import { findCountryByName } from 'api/countries/countriesApi';
+import { useEffect, useState } from 'react';
 import { ChevronLeft } from 'react-feather';
 import { StaticContext } from 'react-router';
 import { RouteComponentProps } from 'react-router-dom';
@@ -47,7 +49,20 @@ const CountryDetails = ({
   history,
   location,
 }: RouteComponentProps<Params, StaticContext, Country>) => {
-  const { state } = location;
+  const [country, setCountry] = useState<Country>();
+
+  useEffect(() => {
+    const fetch = async (countryName: string) =>
+      findCountryByName(countryName).then(data => setCountry(data));
+    if (location.pathname) {
+      fetch(location.pathname.replace('/', ''));
+    }
+  }, [location.pathname]);
+
+  if (!country) {
+    return <div>Nothing to show!</div>;
+  }
+
   const {
     flag,
     name,
@@ -57,10 +72,12 @@ const CountryDetails = ({
     subregion,
     capital,
     topLevelDomain,
-  } = state;
+  } = country;
 
-  const currencies = state.currencies.map(item => item.name);
-  const languages = state.languages.map(item => item.name);
+  console.log(country);
+
+  const currencies = country.currencies.map(item => item.name);
+  const languages = country.languages.map(item => item.name);
 
   return (
     <div className="h-full w-full flex flex-col">
