@@ -74,8 +74,6 @@ const CountryDetails = ({
     topLevelDomain,
   } = country;
 
-  console.log(country);
-
   const currencies = country.currencies.map(item => item.name);
   const languages = country.languages.map(item => item.name);
 
