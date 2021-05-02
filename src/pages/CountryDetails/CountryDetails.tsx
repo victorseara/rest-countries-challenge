@@ -87,7 +87,7 @@ const CountryDetails = () => {
           className="object-cover h-96 xl:w-2/5 w-full shadow-xl rounded-md"
         />
         <section className="flex flex-col flex-1 xl:ml-24 py-12">
-          <h1 className="text-3xl font-bold">{name}</h1>
+          <h2 className="text-3xl font-bold">{name}</h2>
           <div className="flex text-lg flex-col lg:flex-row xl:flex-row">
             <ul className="flex-1 py-4 mr-8">
               <InformationItem label="Native name">
