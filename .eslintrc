@@ -33,9 +33,7 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": true,
-        "optionalDependencies": false,
-        "peerDependencies": false
+        "devDependencies": ["**/*.test.js", "**/*.spec.js", "**/mocks/*"]
       }
     ]
   }
