@@ -93,7 +93,7 @@ const CountryDetails = ({
         <img
           src={flag}
           alt={`Flag of ${name}`}
-          className="object-contain h-42 w-full xl:w-7/12 2xl:w-6/12  sm:w-full shadow-xl rounded-md"
+          className="h-72 sm:h-80 md:h-96 w-full object-cover sm:max-w-xl md:w-8/12 shadow-xl rounded-md"
         />
         <section className="flex flex-col flex-1 xl:ml-24 py-12">
           <h2 className="text-3xl font-bold">{name}</h2>
