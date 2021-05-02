@@ -1,10 +1,16 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable global-require */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-document.querySelector('body')?.classList.add('debug-screens');
+if (process.env.NODE_ENV === 'development') {
+  document.querySelector('body')?.classList.add('debug-screens');
+  const { worker } = require('./mocks/browser');
+  worker.start();
+}
 
 ReactDOM.render(
   <React.StrictMode>

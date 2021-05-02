@@ -29,6 +29,14 @@
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ]
   }
 }
