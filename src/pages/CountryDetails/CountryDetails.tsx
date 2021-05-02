@@ -1,6 +1,6 @@
 import { ChevronLeft } from 'react-feather';
-
-import mock from '../../components/Card/mock.json';
+import { StaticContext } from 'react-router';
+import { RouteComponentProps } from 'react-router-dom';
 
 interface InformationItemProps {
   label: string;
@@ -39,22 +39,15 @@ interface Country {
   languages: Languages[];
 }
 
-interface CountryDetailedInformation {
-  flag: string;
+interface Params {
   name: string;
-  nativeName: string;
-  population: number;
-  region: string;
-  subregion: string;
-  capital: string;
-  topLevelDomain: string[];
-  currencies: string[];
-  languages: string[];
 }
 
-const country = mock[121] as Country;
-
-const CountryDetails = () => {
+const CountryDetails = ({
+  history,
+  location,
+}: RouteComponentProps<Params, StaticContext, Country>) => {
+  const { state } = location;
   const {
     flag,
     name,
@@ -64,10 +57,10 @@ const CountryDetails = () => {
     subregion,
     capital,
     topLevelDomain,
-  } = country;
+  } = state;
 
-  const currencies = country.currencies.map(item => item.name);
-  const languages = country.languages.map(item => item.name);
+  const currencies = state.currencies.map(item => item.name);
+  const languages = state.languages.map(item => item.name);
 
   return (
     <div className="h-full w-full flex flex-col">
@@ -75,6 +68,7 @@ const CountryDetails = () => {
         <button
           className="bg-light-gray dark:bg-common-blue px-8 py-4 flex text-lg items-center font-semibold shadow-md rounded-md hover:border hover:border-dark-hover dark:hover:shadow-xl hover:scale-50 transition-all ease-in"
           type="button"
+          onClick={() => history.goBack()}
         >
           <ChevronLeft />
           Countries
@@ -84,7 +78,7 @@ const CountryDetails = () => {
         <img
           src={flag}
           alt={`Flag of ${name}`}
-          className="object-cover h-96 xl:w-2/5 w-full shadow-xl rounded-md"
+          className="object-contain h-42 w-full xl:w-7/12 2xl:w-6/12  sm:w-full shadow-xl rounded-md"
         />
         <section className="flex flex-col flex-1 xl:ml-24 py-12">
           <h2 className="text-3xl font-bold">{name}</h2>

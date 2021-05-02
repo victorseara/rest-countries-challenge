@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router-dom';
+
 export interface CountryGeneralInformation {
   flag: string;
   name: string;
@@ -11,8 +13,14 @@ interface CardProps {
 }
 
 const Card = ({ country }: CardProps) => {
+  const history = useHistory();
+
   return (
-    <div className="flex flex-col dark:bg-common-blue rounded-md shadow-lg dark:text-white text-very-dark-blue">
+    <div
+      className="flex flex-col dark:bg-common-blue rounded-md shadow-lg dark:text-white text-very-dark-blue cursor-pointer"
+      role="presentation"
+      onClick={() => history.push('/country', country)}
+    >
       <img
         src={country.flag}
         alt={`Flag of ${country.name}`}
