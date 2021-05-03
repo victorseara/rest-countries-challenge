@@ -1,6 +1,7 @@
 import { findCountryByName } from 'api/countries/countriesApi';
+import { Country } from 'api/countries/types/Country';
 import { useEffect, useState } from 'react';
-import { ChevronLeft } from 'react-feather';
+import { ChevronLeft, Loader } from 'react-feather';
 import { StaticContext } from 'react-router';
 import { RouteComponentProps } from 'react-router-dom';
 
@@ -14,32 +15,6 @@ const InformationItem = ({ label, children }: InformationItemProps) => (
     {children}
   </li>
 );
-
-interface Currency {
-  code: string;
-  name: string;
-  symbol: string;
-}
-
-interface Languages {
-  iso639_1: string;
-  iso639_2: string;
-  name: string;
-  nativeName: string;
-}
-
-interface Country {
-  flag: string;
-  name: string;
-  nativeName: string;
-  population: number;
-  region: string;
-  subregion: string;
-  capital: string;
-  topLevelDomain: string[];
-  currencies: Currency[];
-  languages: Languages[];
-}
 
 interface Params {
   name: string;
@@ -60,7 +35,12 @@ const CountryDetails = ({
   }, [location.pathname]);
 
   if (!country) {
-    return <div>Nothing to show!</div>;
+    return (
+      <div className="flex py-12 my-4">
+        <Loader className="animate-spin mr-2" />{' '}
+        <span className="animate-pulse font-semibold">Loading...</span>
+      </div>
+    );
   }
 
   const {

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Country } from 'api/countries/types/Country';
 import { getAllCountries } from 'api/countries/countriesApi';
+import { Loader } from 'react-feather';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import { GridList } from '../../components/GridList/GridList';
@@ -106,7 +107,14 @@ function Home() {
         {status !== 'resolved' ? (
           <div>
             {error && <div>{error}</div>}
-            {status === 'pending' && <div>Is pending...</div>}
+            {status === 'pending' && (
+              <div className="flex">
+                <Loader className="animate-spin mr-2" />{' '}
+                <span className="animate-pulse font-semibold">
+                  Finding countries...
+                </span>
+              </div>
+            )}
           </div>
         ) : (
           <GridList countries={countriesToShow} />

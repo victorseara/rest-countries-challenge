@@ -6,8 +6,8 @@ interface GridListProps {
 }
 
 const EmptyState = () => (
-  <div className="h-full justify-center items-center flex text-very-dark-blue dark:text-white">
-    <h1>Nothing to show!</h1>
+  <div className="flex text-very-dark-blue dark:text-white">
+    <span className="font-semibold">No country match your query.</span>
   </div>
 );
 
