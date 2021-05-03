@@ -70,11 +70,13 @@ const CountryDetails = ({
         </button>
       </div>
       <div className="flex flex-col xl:flex-row">
-        <img
-          src={flag}
-          alt={`Flag of ${name}`}
-          className="h-72 sm:h-80 md:h-96 w-full object-cover sm:max-w-xl md:w-8/12 shadow-xl rounded-md"
-        />
+        <div className="rounded-md max-w-2xl">
+          <img
+            src={flag}
+            alt={`Flag of ${name}`}
+            className="h-auto w-full shadow-xl rounded-md object-contain"
+          />
+        </div>
         <section className="flex flex-col flex-1 xl:ml-24 py-12">
           <h2 className="text-3xl font-bold">{name}</h2>
           <div className="flex text-lg flex-col lg:flex-row xl:flex-row">
