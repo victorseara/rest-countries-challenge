@@ -10,7 +10,7 @@ const Card = ({ country }: CardProps) => {
 
   return (
     <div
-      className="flex flex-col dark:bg-common-blue rounded-md shadow-lg dark:text-white text-very-dark-blue cursor-pointer"
+      className="flex flex-col dark:bg-common-blue rounded-md shadow-lg dark:text-white text-very-dark-blue cursor-pointer transition-all ease-in-out duration-700"
       role="presentation"
       onClick={() => history.push(`/${country.alpha3Code}`)}
     >

@@ -21,7 +21,7 @@ const SearchBox = ({ placeholder, value, onChange }: SearchBoxProps) => {
   }, [localValue, onChange]);
 
   return (
-    <div className="relative flex items-center text-gray-500 dark:text-gray-200 h-14">
+    <div className="relative flex items-center text-gray-500 dark:text-gray-200 h-14 transition-all ease-in-out duration-700">
       <Search className="absolute my-auto mx-4" />
       <input
         className="text-base rounded-md shadow-md w-full h-full font-semibold input-light input-dark pl-16 focus:outline-none focus:ring-inset focus:ring-dark-hover focus:ring-1"
