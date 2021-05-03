@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Country } from 'api/countries/types/Country';
 import { getAllCountries } from 'api/countries/countriesApi';
+import { Loader } from 'react-feather';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import { GridList } from '../../components/GridList/GridList';
@@ -34,10 +35,22 @@ const displayCountries = (
   return result;
 };
 
+type State = {
+  countries: Country[];
+  status: 'pending' | 'resolved' | 'error';
+  error: string;
+};
+
 function Home() {
-  const [countries, setCountries] = useState<Country[]>([]);
+  const [state, setState] = useState<State>({
+    countries: [],
+    status: 'pending',
+    error: '',
+  });
   const [query, setQuery] = useState('');
   const [filterByRegion, setFilterByRegion] = useState('');
+
+  const { countries, status, error } = state;
 
   const countriesToShow =
     filterByRegion || query
@@ -48,7 +61,17 @@ function Home() {
 
   useEffect(() => {
     const fetch = async () => {
-      await getAllCountries().then(data => setCountries(data));
+      await getAllCountries()
+        .then(data =>
+          setState({ countries: data, status: 'resolved', error: '' })
+        )
+        .catch(err =>
+          setState(prevstate => ({
+            ...prevstate,
+            status: 'error',
+            error: err.message,
+          }))
+        );
     };
     fetch();
   }, []);
@@ -81,7 +104,21 @@ function Home() {
         </div>
       </div>
       <div className="mt-52 sm:mt-36">
-        <GridList countries={countriesToShow} />
+        {status !== 'resolved' ? (
+          <div>
+            {error && <div>{error}</div>}
+            {status === 'pending' && (
+              <div className="flex">
+                <Loader className="animate-spin mr-2" />{' '}
+                <span className="animate-pulse font-semibold">
+                  Finding countries...
+                </span>
+              </div>
+            )}
+          </div>
+        ) : (
+          <GridList countries={countriesToShow} />
+        )}
       </div>
     </div>
   );
