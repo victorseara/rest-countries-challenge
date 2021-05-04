@@ -22,7 +22,7 @@ const Card = ({ country }: CardProps) => {
       <Img
         src={country.flag}
         alt={`Flag of ${country.name}`}
-        className="object-cover w-96 h-52 rounded-t-md "
+        className="object-cover w-full h-52 rounded-t-md "
       />
       <div className="py-8 px-6">
         <span className="font-bold text-lg mb-4">{country.name}</span>
