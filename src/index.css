@@ -2,30 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .input-base {
-    @apply text-base rounded-md shadow-md w-full h-full py-8 font-semibold;
-  }
-
-  .focus {
-    @apply shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-300;
-  }
-
-  .active {
-    @apply shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-300 border-2 border-gray-800 dark:border-gray-300;
-  }
-
-  .input-focus {
-    @apply focus:shadow-lg focus:outline-none;
-  }
-  .input-light {
-    @apply placeholder-gray-500 text-very-dark-blue;
-  }
-  .input-dark {
-    @apply dark:bg-common-blue dark:placeholder-gray-300  dark:text-white;
-  }
-}
-
 select {
   appearance: none;
   -webkit-appearance: none;
