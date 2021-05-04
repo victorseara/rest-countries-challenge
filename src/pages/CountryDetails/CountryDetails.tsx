@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { ChevronLeft, Loader } from 'react-feather';
 import { StaticContext } from 'react-router';
 import { RouteComponentProps } from 'react-router-dom';
+import Img from 'react-cool-img';
 
 interface InformationItemProps {
   label: string;
@@ -71,7 +72,7 @@ const CountryDetails = ({
       </div>
       <div className="flex flex-col xl:flex-row">
         <div className="rounded-md max-w-2xl">
-          <img
+          <Img
             src={flag}
             alt={`Flag of ${name}`}
             className="h-auto w-full shadow-xl rounded-md object-contain"
