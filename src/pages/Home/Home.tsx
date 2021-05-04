@@ -37,6 +37,7 @@ const displayCountries = (
 
 type State = {
   countries: Country[];
+  displayed: number;
   status: 'pending' | 'resolved' | 'error';
   error: string;
 };
@@ -44,18 +45,19 @@ type State = {
 function Home() {
   const [state, setState] = useState<State>({
     countries: [],
+    displayed: 0,
     status: 'pending',
     error: '',
   });
   const [query, setQuery] = useState('');
   const [filterByRegion, setFilterByRegion] = useState('');
 
-  const { countries, status, error } = state;
+  const { countries, status, error, displayed } = state;
 
   const countriesToShow =
     filterByRegion || query
       ? displayCountries(countries, filterByRegion, query)
-      : countries;
+      : countries.slice(0, displayed);
 
   const updateQuery = useCallback((value: string) => setQuery(value), []);
 
@@ -63,7 +65,12 @@ function Home() {
     const fetch = async () => {
       await getAllCountries()
         .then(data =>
-          setState({ countries: data, status: 'resolved', error: '' })
+          setState({
+            countries: data,
+            status: 'resolved',
+            error: '',
+            displayed: 8,
+          })
         )
         .catch(err =>
           setState(prevstate => ({
@@ -75,6 +82,22 @@ function Home() {
     };
     fetch();
   }, []);
+
+  const onScroll = () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      if (displayed < countries.length) {
+        setState(prevstate => ({
+          ...prevstate,
+          displayed: prevstate.displayed + 8,
+        }));
+      }
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', onScroll);
+
+    return () => window.removeEventListener('scroll', onScroll);
+  });
 
   return (
     <div className="flex flex-col">
