@@ -59,7 +59,7 @@ const CountryDetails = ({
   const languages = country.languages.map(item => item.name);
 
   return (
-    <div className="h-full w-full flex flex-col">
+    <div className="h-full w-full flex flex-col transition-all duration-1000 ease-linear">
       <div className="py-12 my-4">
         <button
           className="bg-light-gray dark:bg-common-blue px-8 py-4 flex text-lg items-center font-semibold shadow-md rounded-md hover:border hover:border-dark-hover dark:hover:shadow-xl hover:scale-50"
