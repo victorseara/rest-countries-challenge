@@ -13,7 +13,7 @@ const Card = ({ country }: CardProps) => {
 
   return (
     <div
-      className="flex transform focus:-translate-y-1 focus:shadow-2xl hover:-translate-y-1 hover:shadow-2xl flex-col dark:bg-common-blue rounded-md shadow-lg dark:text-white text-very-dark-blue cursor-pointer transition-all ease-in-out duration-300"
+      className="flex transform focus:-translate-y-1 focus:shadow-2xl hover:-translate-y-1 hover:shadow-2xl flex-col dark:bg-common-blue rounded-md shadow-lg dark:text-white text-very-dark-blue cursor-pointer"
       role="button"
       tabIndex={0}
       onClick={navigateToCountry}

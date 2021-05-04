@@ -80,7 +80,7 @@ function Home() {
     <div className="flex flex-col">
       <div
         id="home-fixed-content"
-        className="flex flex-col h-52 sm:h-36 justify-center  w-full fixed left-0 bg-light-gray dark:bg-dark-blue items-center"
+        className="flex z-50 flex-col h-52 sm:h-36 justify-center  w-full fixed left-0 bg-light-gray dark:bg-dark-blue items-center"
       >
         <div className="flex justify-between flex-wrap w-10/12 max-w-screen-2xl">
           <div className="w-full sm:w-1/3 " style={{ minWidth: '320px' }}>
