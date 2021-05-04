@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { ChevronLeft, Loader } from 'react-feather';
 import { StaticContext } from 'react-router';
 import { RouteComponentProps } from 'react-router-dom';
+import Img from 'react-cool-img';
 
 interface InformationItemProps {
   label: string;
@@ -58,10 +59,10 @@ const CountryDetails = ({
   const languages = country.languages.map(item => item.name);
 
   return (
-    <div className="h-full w-full flex flex-col">
+    <div className="h-full w-full flex flex-col transition-all ease-linear duration-500">
       <div className="py-12 my-4">
         <button
-          className="bg-light-gray dark:bg-common-blue px-8 py-4 flex text-lg items-center font-semibold shadow-md rounded-md hover:border hover:border-dark-hover dark:hover:shadow-xl hover:scale-50 transition-all ease-in"
+          className="bg-light-gray dark:bg-common-blue px-8 py-4 flex text-lg items-center font-semibold shadow-md rounded-md hover:border hover:border-dark-hover dark:hover:shadow-xl hover:scale-50 transition-alll ease-linear duration-700"
           type="button"
           onClick={() => history.goBack()}
         >
@@ -70,11 +71,13 @@ const CountryDetails = ({
         </button>
       </div>
       <div className="flex flex-col xl:flex-row">
-        <img
-          src={flag}
-          alt={`Flag of ${name}`}
-          className="h-72 sm:h-80 md:h-96 w-full object-cover sm:max-w-xl md:w-8/12 shadow-xl rounded-md"
-        />
+        <div className="rounded-md max-w-2xl">
+          <Img
+            src={flag}
+            alt={`Flag of ${name}`}
+            className="h-auto w-full shadow-xl rounded-md object-contain"
+          />
+        </div>
         <section className="flex flex-col flex-1 xl:ml-24 py-12">
           <h2 className="text-3xl font-bold">{name}</h2>
           <div className="flex text-lg flex-col lg:flex-row xl:flex-row">

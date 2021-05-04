@@ -20,7 +20,7 @@ const Dropdown = ({
   return (
     <label
       htmlFor="Filter by Region"
-      className="relative flex items-center text-gray-500 dark:text-gray-200 rounded-md shadow-md h-14"
+      className="relative flex items-center text-gray-500 dark:text-gray-200 rounded-md shadow-md h-14 transition-all ease-linear duration-700"
     >
       <ChevronDown className="absolute my-auto right-0 mx-4" />
       <select
