@@ -15,6 +15,7 @@ const Header = ({ title, toggleTheme }: HeaderProps) => {
         <h1 className="font-bold text-xl sm:text-3xl">{title}</h1>
         <button
           type="button"
+          aria-label="Change theme"
           className="flex cursor-pointer hover:opacity-80"
           onClick={toggleTheme}
         >
