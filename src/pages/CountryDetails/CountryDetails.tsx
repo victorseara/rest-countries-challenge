@@ -1,10 +1,11 @@
 import { findCountryByName } from 'api/countries/countriesApi';
 import { Country } from 'api/countries/types/Country';
 import { useEffect, useState } from 'react';
-import { ChevronLeft, Loader } from 'react-feather';
+import { ChevronLeft } from 'react-feather';
 import { StaticContext } from 'react-router';
 import { RouteComponentProps } from 'react-router-dom';
 import Img from 'react-cool-img';
+import { Loader } from 'components/Loader/Loader';
 
 interface InformationItemProps {
   label: string;
@@ -36,12 +37,7 @@ const CountryDetails = ({
   }, [location.pathname]);
 
   if (!country) {
-    return (
-      <div className="flex py-12 my-4">
-        <Loader className="animate-spin mr-2" />{' '}
-        <span className="animate-pulse font-semibold">Loading...</span>
-      </div>
-    );
+    return <Loader message="Loading informations..." />;
   }
 
   const {

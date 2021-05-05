@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Country } from 'api/countries/types/Country';
 import { getAllCountries } from 'api/countries/countriesApi';
-import { Loader } from 'react-feather';
+import { Loader } from 'components/Loader/Loader';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import { GridList } from '../../components/GridList/GridList';
@@ -84,7 +84,11 @@ function Home() {
   }, []);
 
   const onScroll = () => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    const marginBottom = 200;
+    if (
+      window.innerHeight + window.scrollY + marginBottom >=
+      document.body.offsetHeight
+    ) {
       if (displayed < countries.length) {
         setState(prevstate => ({
           ...prevstate,
@@ -93,18 +97,18 @@ function Home() {
       }
     }
   };
+
   useEffect(() => {
     window.addEventListener('scroll', onScroll);
 
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
   });
 
   return (
     <div className="flex flex-col">
-      <div
-        id="home-fixed-content"
-        className="flex z-50 flex-col h-52 sm:h-36 justify-center  w-full fixed left-0 bg-light-gray dark:bg-dark-blue items-center"
-      >
+      <div className="flex z-50 flex-col h-52 sm:h-36 fixed justify-center  w-full left-0 bg-light-gray dark:bg-dark-blue items-center">
         <div className="flex justify-between flex-wrap w-10/12 max-w-screen-2xl">
           <div className="w-full sm:w-1/3 " style={{ minWidth: '320px' }}>
             <SearchBox
@@ -130,14 +134,7 @@ function Home() {
         {status !== 'resolved' ? (
           <div>
             {error && <div>{error}</div>}
-            {status === 'pending' && (
-              <div className="flex">
-                <Loader className="animate-spin mr-2" />{' '}
-                <span className="animate-pulse font-semibold">
-                  Finding countries...
-                </span>
-              </div>
-            )}
+            {status === 'pending' && <Loader message="Finding countries..." />}
           </div>
         ) : (
           <GridList countries={countriesToShow} />
