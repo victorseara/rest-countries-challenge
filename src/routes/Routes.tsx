@@ -1,6 +1,6 @@
 import Loader from 'components/Loader/Loader';
 import React, { Suspense, useEffect, useState } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import Header from '../components/Header/Header';
 
 const Home = React.lazy(() => import('pages/Home/Home'));
@@ -39,7 +39,7 @@ const Routes = () => {
   };
 
   return (
-    <BrowserRouter basename="/rest-countries-challenge">
+    <HashRouter basename="/">
       <div className="flex flex-col w-full dark:bg-dark-blue bg-light-gray min-h-screen text-very-dark-blue dark:text-white">
         <Header title="Where in the world ?" toggleTheme={toggleTheme} />
         <div className="h-full w-10/12 max-w-screen-2xl flex flex-col self-center mt-20">
@@ -51,7 +51,7 @@ const Routes = () => {
           </main>
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
