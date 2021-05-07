@@ -3,12 +3,12 @@
     "static/js/0.d98d1672.chunk.js": "/rest-countries-challenge/static/js/0.d98d1672.chunk.js",
     "static/js/0.d98d1672.chunk.js.map": "/rest-countries-challenge/static/js/0.d98d1672.chunk.js.map",
     "main.css": "/rest-countries-challenge/static/css/main.913a46b4.chunk.css",
-    "main.js": "/rest-countries-challenge/static/js/main.21228149.chunk.js",
-    "main.js.map": "/rest-countries-challenge/static/js/main.21228149.chunk.js.map",
+    "main.js": "/rest-countries-challenge/static/js/main.f706bcdc.chunk.js",
+    "main.js.map": "/rest-countries-challenge/static/js/main.f706bcdc.chunk.js.map",
     "runtime-main.js": "/rest-countries-challenge/static/js/runtime-main.5e8104bf.js",
     "runtime-main.js.map": "/rest-countries-challenge/static/js/runtime-main.5e8104bf.js.map",
-    "static/js/3.42a0eb4b.chunk.js": "/rest-countries-challenge/static/js/3.42a0eb4b.chunk.js",
-    "static/js/3.42a0eb4b.chunk.js.map": "/rest-countries-challenge/static/js/3.42a0eb4b.chunk.js.map",
+    "static/js/3.7cc1efaf.chunk.js": "/rest-countries-challenge/static/js/3.7cc1efaf.chunk.js",
+    "static/js/3.7cc1efaf.chunk.js.map": "/rest-countries-challenge/static/js/3.7cc1efaf.chunk.js.map",
     "static/js/4.60628d17.chunk.js": "/rest-countries-challenge/static/js/4.60628d17.chunk.js",
     "static/js/4.60628d17.chunk.js.map": "/rest-countries-challenge/static/js/4.60628d17.chunk.js.map",
     "static/js/5.f10fde36.chunk.js": "/rest-countries-challenge/static/js/5.f10fde36.chunk.js",
@@ -17,12 +17,12 @@
     "static/js/6.1571b476.chunk.js.map": "/rest-countries-challenge/static/js/6.1571b476.chunk.js.map",
     "index.html": "/rest-countries-challenge/index.html",
     "static/css/main.913a46b4.chunk.css.map": "/rest-countries-challenge/static/css/main.913a46b4.chunk.css.map",
-    "static/js/3.42a0eb4b.chunk.js.LICENSE.txt": "/rest-countries-challenge/static/js/3.42a0eb4b.chunk.js.LICENSE.txt"
+    "static/js/3.7cc1efaf.chunk.js.LICENSE.txt": "/rest-countries-challenge/static/js/3.7cc1efaf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5e8104bf.js",
-    "static/js/3.42a0eb4b.chunk.js",
+    "static/js/3.7cc1efaf.chunk.js",
     "static/css/main.913a46b4.chunk.css",
-    "static/js/main.21228149.chunk.js"
+    "static/js/main.f706bcdc.chunk.js"
   ]
 }
