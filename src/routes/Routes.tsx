@@ -39,7 +39,7 @@ const Routes = () => {
   };
 
   return (
-    <BrowserRouter basename="/countries-rest-api-with-theme-switcher">
+    <BrowserRouter basename="/rest-countries-challenge">
       <div className="flex flex-col w-full dark:bg-dark-blue bg-light-gray min-h-screen text-very-dark-blue dark:text-white">
         <Header title="Where in the world ?" toggleTheme={toggleTheme} />
         <div className="h-full w-10/12 max-w-screen-2xl flex flex-col self-center mt-20">
