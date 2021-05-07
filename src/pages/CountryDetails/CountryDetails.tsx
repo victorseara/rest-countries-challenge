@@ -40,6 +40,7 @@ const CountryDetails = ({
             )
           );
           const borders = await Promise.all(promises);
+
           return setCountry({ ...data, borders });
         }
         return setCountry({ ...data, borders: undefined });
@@ -133,7 +134,7 @@ const CountryDetails = ({
                   <li key={item.alpha3Code}>
                     <button
                       type="button"
-                      title={item.name}
+                      title={item.alpha3Code}
                       onClick={() => history.push(`/${item.alpha3Code}`)}
                       className="bg-white shadow-md rounded-md flex mr-1 py-1 px-4 items-center justify-center mb-4 dark:bg-common-blue font-semibold hover:border hover:border-dark-hover dark:hover:shadow-xl hover:scale-50"
                     >

@@ -18,6 +18,7 @@ const Card = ({ country }: CardProps) => {
       tabIndex={0}
       onClick={navigateToCountry}
       onKeyDown={e => (e.key === 'Enter' ? navigateToCountry() : null)}
+      data-testid="country-card"
     >
       <Img
         src={country.flag}
