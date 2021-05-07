@@ -1,4 +1,5 @@
 import { Moon } from 'react-feather';
+import { useHistory } from 'react-router';
 
 interface HeaderProps {
   title: string;
@@ -6,13 +7,21 @@ interface HeaderProps {
 }
 
 const Header = ({ title, toggleTheme }: HeaderProps) => {
+  const history = useHistory();
+
   return (
     <div
       id="main-header"
       className="w-full fixed z-50 bg-white dark:bg-common-blue h-20 shadow-md flex justify-center text-dark-blue dark:text-white"
     >
       <div className="w-10/12 max-w-screen-2xl flex justify-between items-center">
-        <h1 className="font-bold text-xl sm:text-3xl">{title}</h1>
+        <button
+          type="button"
+          onClick={() => history.push('/')}
+          className="font-bold text-xl sm:text-3xl"
+        >
+          {title}
+        </button>
         <button
           type="button"
           aria-label="Change theme"

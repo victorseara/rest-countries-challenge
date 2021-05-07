@@ -11,6 +11,11 @@ interface Languages {
   nativeName: string;
 }
 
+export interface Border {
+  alpha3Code: string;
+  name: string;
+}
+
 export interface Country {
   flag: string;
   alpha3Code: string;

@@ -1,6 +1,6 @@
 {
-  "name": "countries-rest-api-with-theme-switcher",
-  "homepage": "https://victorseara.github.io/countries-rest-api-with-theme-switcher/",
+  "name": "rest-countries-challenge",
+  "homepage": "https://victorseara.github.io/rest-countries-challenge/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

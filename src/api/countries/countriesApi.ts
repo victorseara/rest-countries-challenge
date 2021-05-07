@@ -19,9 +19,12 @@ export const getAllCountries = async () => {
     });
 };
 
-export const findCountryByName = async (countryCode: string) => {
+export const findCountryByCode = async (
+  countryCode: string,
+  params?: string
+) => {
   return client
-    .get<Country>(`${COUNTRIES_API_URL}/alpha/${countryCode}`)
+    .get<Country>(`${COUNTRIES_API_URL}/alpha/${countryCode}`, { params })
     .then(response => response.data)
     .catch(error => {
       if (error.isAxiosError && error.status === 404) {
