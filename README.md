@@ -1,50 +1,62 @@
-# Getting Started with Create React
+# REST Countries API with color theme switcher
 
-[![CI](https://github.com/victorseara/countries-rest-api-with-theme-switcher/actions/workflows/main.yml/badge.svg)](https://github.com/victorseara/countries-rest-api-with-theme-switcher/actions/workflows/main.yml)
+[![CI](https://github.com/victorseara/countries-rest-api-with-theme-switcher/actions/workflows/main.yml/badge.svg)](https://github.com/victorseara/countries-rest-api-with-theme-switcher/actions/workflows/main.yml) ![COVERAGE](./coverage/badge.svg)
 
-![COVERAGE](./coverage/badge.svg)
+## TLDR
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my solution for the REST Countries API with color theme swicher by [Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca) made it with React. With this challenge I wanted to added more tools to my utility belt and explore topics like performance and acessibility.
 
-## Available Scripts
+You can check it out the result [here](https://victorseara.github.io/rest-countries-challenge).
 
-In the project directory, you can run:
+### Running locally
 
-### `yarn start`
+```
+git clone https://github.com/victorseara/rest-countries-challenge.git
+cd rest-countries-challenge
+yarn && yarn start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- React + Typescript
+- TailwindCSS
+- Jest + React Testing Library
+- Eslint + Prettier + Husky
+- Github Actions + Github Pages
 
-### `yarn test`
+### Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Users should be able to:
 
-### `yarn build`
+- See all countries from the API on the homepage
+- Search for a country using an `input` field
+- Filter countries by region
+- Click on a country to see more detailed information on a separate page
+- Click through to the border countries on the detail page
+- Toggle the color scheme between light and dark mode _(optional)_
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### How I build it
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Before start to code, I brought all the requirements to a GitKraken board and broked it all into smaller parts, this help me a lot to organize what I had to do and get a clear vision about how to approach each problem.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Then I bootstrap the project using CRA and did some tweaks like linters and test configuration. Added husky to help me with CI and setup Github Pages for continuous deployment.
 
-### `yarn eject`
+I started to code by the components. Used a inside / outside approach, wich means that atomic components was the first to be builded and then composed into larger components, pages etc. TailwindCSS made it pretty straight foward, they provide a very simple API, a smoothly learning curve and a first class documentation.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+After all layout parts I need to integrate with REST Countries API, for that I choosed axios as HTTP client and msw to mock the requests on development and test environment. Use msw was a game change for me, had great DX using it in this project. Can't wait to bring it to my professional work to.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Some important notes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+_$0,02 on Performance_
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+A challenge there is not very clear looking only to the requirements is performance. We need to show all countries and their pictures soon as user reach the first page. This lead us to performance issues like a too large time to begin interactive. To address this problems I made something like a virtualized list, where items are painted on the screen soon as they became visible. This solves the issue partially because all images was still downloaded on intial rendering. The solution for this second problem was apply lazy load to images. I used a lib called react-cool-img for this job and it was perfect fit.
 
-## Learn More
+_$0,02 on Accesibility_
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Decrease the barriers that UI impose to users is a challenge that all devs should embrace. Thinking of this, I made my best effort to use the most semanticaly markup I could and ensure that keyboard-only users can interact with the application without struggling with controls that doesn't work.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Let me know what you think
+
+Feel free to reach me if you are curious about something especific about this challenge or to provide some guide if your are doing this challenge to, I'll be glad to help.
+
+Any problems you find or suggestions to improve it are welcome, use the _issues_ panel for this.
