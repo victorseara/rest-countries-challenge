@@ -43,7 +43,7 @@ Then I bootstrap the project using CRA and did some tweaks like linters and test
 
 I started to code by the components. Used a inside / outside approach, wich means that atomic components was the first to be builded and then composed into larger components, pages etc.[TailwindCSS](https://github.com/tailwindlabs/tailwindcss) made it pretty straight foward, they provide a very simple API, a smoothly learning curve and a first class documentation.
 
-After all layout parts I need to integrate with [REST Countries API](https://restcountries.eu/), for that I choosed [axios](https://github.com/axios/axios) as HTTP client and [msw](https://github.com/mswjs/msw) to mock the requests on development and test environment. Use msw was a game change for me, had great DX using it in this project. Can't wait to bring it to my professional work to.
+After all layout parts are done I needed to integrate with [REST Countries API](https://restcountries.eu/), for that I choosed [axios](https://github.com/axios/axios) as HTTP client and [msw](https://github.com/mswjs/msw) to mock the requests on development and test environment. Use msw was a game change for me, had great DX using it in this project. Can't wait to bring it to my professional work to.
 
 ### Some important notes
 
