@@ -26,7 +26,7 @@ const Card = ({ country }: CardProps) => {
         className="object-cover w-full h-52 rounded-t-md "
       />
       <div className="py-8 px-6">
-        <span className="font-bold text-lg mb-4">{country.name}</span>
+        <h6 className="font-bold text-lg mb-4">{country.name}</h6>
         <ul>
           <li className="mb-2">
             <span className="font-semibold">Population: </span>{' '}

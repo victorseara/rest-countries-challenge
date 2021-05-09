@@ -33,7 +33,7 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["**/*.test.js", "**/*.spec.js", "**/mocks/*"]
+        "devDependencies": ["**/*.test.tsx", "**/*.spec.tsx", "**/mocks/*"]
       }
     ]
   }
