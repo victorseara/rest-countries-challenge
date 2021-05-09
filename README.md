@@ -37,7 +37,7 @@ Users should be able to:
 
 ### How I build it
 
-Before start to code, I brought all the requirements to a GitKraken board and broked it all into smaller parts, this help me a lot to organize what I had to do and get a clear vision about how to approach each problem.
+Before start to code, I brought all the requirements to a [GitKraken board](https://app.gitkraken.com/glo/board/YIRovYynhAASUbb_) and broked it all into smaller parts, this help me a lot to organize what I had to do and get a clear vision about how to approach each problem.
 
 Then I bootstrap the project using CRA and did some tweaks like linters and test configuration. Added husky to help me with CI and setup Github Pages for continuous deployment.
 
