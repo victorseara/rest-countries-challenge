@@ -75,6 +75,10 @@
     "tailwindcss-debug-screens": "^2.0.0"
   },
   "jest": {
+    "coverageReporters": [
+      "json-summary",
+      "text-summary"
+    ],
     "collectCoverageFrom": [
       "!src/mocks/**",
       "!src/reportWebVitals.*",
