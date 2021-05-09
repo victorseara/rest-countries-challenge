@@ -122,6 +122,7 @@ function Home() {
             style={{ minWidth: '200px' }}
           >
             <Dropdown
+              name="query-by-name"
               options={regionOptions}
               placeholder="Filter by Region"
               value={filterByRegion}
