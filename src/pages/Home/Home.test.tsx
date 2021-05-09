@@ -10,6 +10,9 @@ import React from 'react';
 import getAllCountries200 from 'mocks/responses/getAllCountries200.json';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
+import { server } from 'mocks/server';
+import { rest } from 'msw';
+import { COUNTRIES_API_URL } from 'api/countries/countriesApi';
 import Home from './Home';
 
 const asyncRender = async (Component: React.ReactElement) => {
@@ -74,9 +77,18 @@ describe('Home page test', () => {
     );
 
     const country = getAllCountries200[0];
-
     userEvent.click(screen.getByRole('heading', { name: country.name }));
-
     expect(history.location.pathname).toEqual(`/${country.alpha3Code}`);
+  });
+
+  it('should show an error message when fetch fails', async () => {
+    server.use(
+      rest.get(`${COUNTRIES_API_URL}/all`, (req, res, ctx) =>
+        res(ctx.status(401))
+      )
+    );
+    render(<Home />);
+
+    await waitFor(() => expect(screen.getByRole('alert')).toBeVisible());
   });
 });

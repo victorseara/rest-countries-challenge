@@ -76,11 +76,10 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "!src/mocks/**"
-    ],
-    "coverageReporters": [
-      "json-summary",
-      "text-summary"
+      "!src/mocks/**",
+      "!src/reportWebVitals.*",
+      "!src/react-app-env.*",
+      "!src/index.tsx"
     ]
   },
   "msw": {

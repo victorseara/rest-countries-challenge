@@ -133,7 +133,7 @@ function Home() {
       <div className="mt-52 sm:mt-36">
         {status !== 'resolved' ? (
           <div>
-            {error && <div>{error}</div>}
+            {error && <div role="alert">{error}</div>}
             {status === 'pending' && <Loader message="Finding countries..." />}
           </div>
         ) : (

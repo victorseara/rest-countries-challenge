@@ -30,7 +30,7 @@ const Dropdown = ({
         className="w-full h-full dark:bg-common-blue px-8 bg-white rounded-md font-semibold focus:outline-none focus:ring-inset focus:ring-dark-hover focus:ring-1"
       >
         <option disabled hidden className="font-semibold" value="">
-          {placeholder || 'Select an option'}
+          {placeholder}
         </option>
         {options.map(item => (
           <option key={item} className="font-semibold">

@@ -17,7 +17,7 @@ const Card = ({ country }: CardProps) => {
       role="button"
       tabIndex={0}
       onClick={navigateToCountry}
-      onKeyDown={e => (e.key === 'Enter' ? navigateToCountry() : null)}
+      onKeyDown={e => e.key === 'Enter' && navigateToCountry()}
       data-testid="country-card"
     >
       <Img

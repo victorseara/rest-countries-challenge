@@ -29,7 +29,7 @@ const SearchBox = ({ placeholder, value, onChange }: SearchBoxProps) => {
         aria-label="Search"
         onChange={e => setLocalValue(e.target.value)}
         value={localValue}
-        placeholder={placeholder || 'Search ...'}
+        placeholder={placeholder}
       />
     </div>
   );
