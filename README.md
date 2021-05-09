@@ -41,15 +41,15 @@ Before start to code, I brought all the requirements to a GitKraken board and br
 
 Then I bootstrap the project using CRA and did some tweaks like linters and test configuration. Added husky to help me with CI and setup Github Pages for continuous deployment.
 
-I started to code by the components. Used a inside / outside approach, wich means that atomic components was the first to be builded and then composed into larger components, pages etc. TailwindCSS made it pretty straight foward, they provide a very simple API, a smoothly learning curve and a first class documentation.
+I started to code by the components. Used a inside / outside approach, wich means that atomic components was the first to be builded and then composed into larger components, pages etc.[TailwindCSS](https://github.com/tailwindlabs/tailwindcss) made it pretty straight foward, they provide a very simple API, a smoothly learning curve and a first class documentation.
 
-After all layout parts I need to integrate with REST Countries API, for that I choosed axios as HTTP client and msw to mock the requests on development and test environment. Use msw was a game change for me, had great DX using it in this project. Can't wait to bring it to my professional work to.
+After all layout parts I need to integrate with [REST Countries API](https://restcountries.eu/), for that I choosed [axios](https://github.com/axios/axios) as HTTP client and [msw](https://github.com/mswjs/msw) to mock the requests on development and test environment. Use msw was a game change for me, had great DX using it in this project. Can't wait to bring it to my professional work to.
 
 ### Some important notes
 
 _$0,02 on Performance_
 
-A challenge there is not very clear looking only to the requirements is performance. We need to show all countries and their pictures soon as user reach the first page. This lead us to performance issues like a too large time to begin interactive. To address this problems I made something like a virtualized list, where items are painted on the screen soon as they became visible. This solves the issue partially because all images was still downloaded on intial rendering. The solution for this second problem was apply lazy load to images. I used a lib called react-cool-img for this job and it was perfect fit.
+A challenge there is not very clear looking only to the requirements is performance. We need to show all countries and their pictures soon as user reach the first page. This lead us to performance issues like a too large time to begin interactive. To address this problems I made something like a virtualized list, where items are painted on the screen soon as they became visible. This solves the issue partially because all images was still downloaded on intial rendering. The solution for this second problem was apply lazy load to images. I used a lib called [react-cool-img](https://github.com/wellyshen/react-cool-img) for this job and it was perfect fit.
 
 _$0,02 on Accesibility_
 
