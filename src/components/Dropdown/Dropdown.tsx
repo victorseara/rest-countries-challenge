@@ -19,11 +19,12 @@ const Dropdown = ({
 }: DropdownProps) => {
   return (
     <label
-      htmlFor="Filter by Region"
+      htmlFor={name}
       className="relative flex items-center text-gray-500 dark:text-gray-200 rounded-md shadow-md h-14"
     >
       <ChevronDown className="absolute my-auto right-0 mx-4" />
       <select
+        id={name}
         onChange={onChange}
         name={name}
         value={value}
