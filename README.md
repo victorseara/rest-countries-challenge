@@ -57,6 +57,6 @@ Decrease the barriers that UI impose to users is a challenge that all devs shoul
 
 ### Let me know what you think
 
-Feel free to reach me if you are curious about something especific about this challenge or to provide some guide if your are doing this challenge to, I'll be glad to help.
+Feel free to reach me if you are curious about something specific about this challenge or to provide some guidance if your are doing this challenge to, I'll be glad to help.
 
 Any problems you find or suggestions to improve it are welcome, use the _issues_ panel for this.
