@@ -1,7 +1,11 @@
 {
   "name": "rest-countries-challenge",
   "homepage": "https://victorseara.github.io/rest-countries-challenge/",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "author": {
+    "name": "Victor Seara",
+    "email": "victorseara.me@gmail.com"
+  },
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.2",
