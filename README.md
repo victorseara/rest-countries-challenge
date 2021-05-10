@@ -47,16 +47,16 @@ After all layout parts are done I needed to integrate with [REST Countries API](
 
 ### Some important notes
 
-_$0,02 on Performance_
+_about Performance_
 
 A challenge there is not very clear looking only to the requirements is performance. We need to show all countries and their pictures soon as user reach the first page. This lead us to performance issues like a too large time to begin interactive. To address this problems I made something like a virtualized list, where items are painted on the screen soon as they became visible. This solves the issue partially because all images was still downloaded on intial rendering. The solution for this second problem was apply lazy load to images. I used a lib called [react-cool-img](https://github.com/wellyshen/react-cool-img) for this job and it was a perfect fit.
 
-_$0,02 on Accesibility_
+_$about Accesibility_
 
 Decrease the barriers that UI impose to users is a challenge that all devs should embrace. Thinking of this, I made my best effort to use the most semanticaly markup I could and ensure that keyboard-only users can interact with the application without struggling with controls that doesn't work.
 
 ### Let me know what you think
 
-Feel free to reach me if you are curious about something specific about this challenge or to provide some guidance if your are doing this challenge to, I'll be glad to help.
+Feel free to reach me if you are curious about something specific about this challenge or to provide some guidance if your are doing this challenge too, I'll be glad to help.
 
 Any problems you find or suggestions to improve it are welcome, use the _issues_ panel for this.
