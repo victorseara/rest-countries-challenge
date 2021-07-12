@@ -73,7 +73,7 @@
     "husky": "^6.0.0",
     "make-coverage-badge": "^1.2.0",
     "msw": "^0.28.2",
-    "postcss": "^8",
+    "postcss": "7",
     "prettier": "^2.2.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "tailwindcss-debug-screens": "^2.0.0"
