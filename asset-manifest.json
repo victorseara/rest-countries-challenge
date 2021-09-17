@@ -1,28 +1,28 @@
 {
   "files": {
-    "static/js/0.d98d1672.chunk.js": "/rest-countries-challenge/static/js/0.d98d1672.chunk.js",
-    "static/js/0.d98d1672.chunk.js.map": "/rest-countries-challenge/static/js/0.d98d1672.chunk.js.map",
+    "static/js/0.9bc3fe24.chunk.js": "/rest-countries-challenge/static/js/0.9bc3fe24.chunk.js",
+    "static/js/0.9bc3fe24.chunk.js.map": "/rest-countries-challenge/static/js/0.9bc3fe24.chunk.js.map",
     "main.css": "/rest-countries-challenge/static/css/main.2f44abfc.chunk.css",
-    "main.js": "/rest-countries-challenge/static/js/main.f706bcdc.chunk.js",
-    "main.js.map": "/rest-countries-challenge/static/js/main.f706bcdc.chunk.js.map",
-    "runtime-main.js": "/rest-countries-challenge/static/js/runtime-main.7046b050.js",
-    "runtime-main.js.map": "/rest-countries-challenge/static/js/runtime-main.7046b050.js.map",
+    "main.js": "/rest-countries-challenge/static/js/main.d28a9556.chunk.js",
+    "main.js.map": "/rest-countries-challenge/static/js/main.d28a9556.chunk.js.map",
+    "runtime-main.js": "/rest-countries-challenge/static/js/runtime-main.c4f9fd46.js",
+    "runtime-main.js.map": "/rest-countries-challenge/static/js/runtime-main.c4f9fd46.js.map",
     "static/js/3.7cc1efaf.chunk.js": "/rest-countries-challenge/static/js/3.7cc1efaf.chunk.js",
     "static/js/3.7cc1efaf.chunk.js.map": "/rest-countries-challenge/static/js/3.7cc1efaf.chunk.js.map",
-    "static/js/4.2b6daa75.chunk.js": "/rest-countries-challenge/static/js/4.2b6daa75.chunk.js",
-    "static/js/4.2b6daa75.chunk.js.map": "/rest-countries-challenge/static/js/4.2b6daa75.chunk.js.map",
-    "static/js/5.62dce293.chunk.js": "/rest-countries-challenge/static/js/5.62dce293.chunk.js",
-    "static/js/5.62dce293.chunk.js.map": "/rest-countries-challenge/static/js/5.62dce293.chunk.js.map",
-    "static/js/6.1571b476.chunk.js": "/rest-countries-challenge/static/js/6.1571b476.chunk.js",
-    "static/js/6.1571b476.chunk.js.map": "/rest-countries-challenge/static/js/6.1571b476.chunk.js.map",
+    "static/js/4.c2ae3962.chunk.js": "/rest-countries-challenge/static/js/4.c2ae3962.chunk.js",
+    "static/js/4.c2ae3962.chunk.js.map": "/rest-countries-challenge/static/js/4.c2ae3962.chunk.js.map",
+    "static/js/5.6ed9142f.chunk.js": "/rest-countries-challenge/static/js/5.6ed9142f.chunk.js",
+    "static/js/5.6ed9142f.chunk.js.map": "/rest-countries-challenge/static/js/5.6ed9142f.chunk.js.map",
+    "static/js/6.dc4f5f5c.chunk.js": "/rest-countries-challenge/static/js/6.dc4f5f5c.chunk.js",
+    "static/js/6.dc4f5f5c.chunk.js.map": "/rest-countries-challenge/static/js/6.dc4f5f5c.chunk.js.map",
     "index.html": "/rest-countries-challenge/index.html",
     "static/css/main.2f44abfc.chunk.css.map": "/rest-countries-challenge/static/css/main.2f44abfc.chunk.css.map",
     "static/js/3.7cc1efaf.chunk.js.LICENSE.txt": "/rest-countries-challenge/static/js/3.7cc1efaf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.7046b050.js",
+    "static/js/runtime-main.c4f9fd46.js",
     "static/js/3.7cc1efaf.chunk.js",
     "static/css/main.2f44abfc.chunk.css",
-    "static/js/main.f706bcdc.chunk.js"
+    "static/js/main.d28a9556.chunk.js"
   ]
 }
