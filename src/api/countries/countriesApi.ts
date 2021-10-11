@@ -6,11 +6,8 @@ export const COUNTRIES_API_URL = 'https://restcountries.com/v2';
 const client = axios.create({ baseURL: COUNTRIES_API_URL });
 
 export const getAllCountries = async () => {
-  const params = { fields: 'flag;name;population;region;capital;alpha3Code' };
   return client
-    .get<Country[]>(`${COUNTRIES_API_URL}/all`, {
-      params,
-    })
+    .get<Country[]>(`${COUNTRIES_API_URL}/all`)
     .then(response => response.data)
     .catch(() => {
       throw new Error(
