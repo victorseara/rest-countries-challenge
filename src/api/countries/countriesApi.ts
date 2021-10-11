@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Country } from './types/Country';
 
-export const COUNTRIES_API_URL = 'https://restcountries.eu/rest/v2';
+export const COUNTRIES_API_URL = 'https://restcountries.com/v2';
 
 const client = axios.create({ baseURL: COUNTRIES_API_URL });
 
