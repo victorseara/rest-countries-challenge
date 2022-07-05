@@ -1,6 +1,6 @@
 import Loader from 'components/Loader/Loader';
 import React, { Suspense, useEffect, useState } from 'react';
-import { HashRouter, Route } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import Header from '../components/Header/Header';
 
 const Home = React.lazy(() => import('pages/Home/Home'));
@@ -10,7 +10,7 @@ const CountryDetails = React.lazy(
 
 type UserTheme = 'light' | 'dark';
 
-const Routes = () => {
+function Router() {
   const [userTheme, setUserTheme] = useState<UserTheme>('light');
 
   useEffect(() => {
@@ -45,14 +45,16 @@ const Routes = () => {
         <div className="h-full w-10/12 max-w-screen-2xl flex flex-col self-center mt-20">
           <main className="h-full">
             <Suspense fallback={<Loader />}>
-              <Route path="/" exact component={Home} />
-              <Route path="/:countryCode" component={CountryDetails} />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/:countryCode" element={<CountryDetails />} />
+              </Routes>
             </Suspense>
           </main>
         </div>
       </div>
     </HashRouter>
   );
-};
+}
 
-export default Routes;
+export default Router;

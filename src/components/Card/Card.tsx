@@ -1,5 +1,5 @@
 import { Country } from 'api/countries/types/Country';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Img from 'react-cool-img';
 
 interface CardProps {
@@ -7,9 +7,9 @@ interface CardProps {
 }
 
 const Card = ({ country }: CardProps) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  const navigateToCountry = () => history.push(`/${country.alpha3Code}`);
+  const navigateToCountry = () => navigate(`/${country.alpha3Code}`);
 
   return (
     <div

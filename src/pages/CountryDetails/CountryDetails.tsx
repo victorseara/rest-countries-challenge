@@ -1,11 +1,10 @@
-import { findCountryByCode } from 'api/countries/countriesApi';
-import { Country, Border } from 'api/countries/types/Country';
-import { useEffect, useState } from 'react';
-import { ChevronLeft } from 'react-feather';
-import { StaticContext } from 'react-router';
-import { RouteComponentProps } from 'react-router-dom';
-import Img from 'react-cool-img';
-import { Loader } from 'components/Loader/Loader';
+import { findCountryByCode } from "api/countries/countriesApi";
+import { Border, Country } from "api/countries/types/Country";
+import { Loader } from "components/Loader/Loader";
+import { useEffect, useState } from "react";
+import Img from "react-cool-img";
+import { ChevronLeft } from "react-feather";
+import { useLocation, useNavigate } from "react-router";
 
 interface InformationItemProps {
   label: string;
@@ -18,36 +17,32 @@ const InformationItem = ({ label, children }: InformationItemProps) => (
   </li>
 );
 
-type CountryDetailInfo = Omit<Country, 'borders'> & { borders?: Border[] };
+type CountryDetailInfo = Omit<Country, "borders"> & { borders?: Border[] };
 
-interface Params {
-  name: string;
-}
-
-const CountryDetails = ({
-  history,
-  location,
-}: RouteComponentProps<Params, StaticContext, Country>) => {
+const CountryDetails = () => {
   const [country, setCountry] = useState<CountryDetailInfo>();
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const fetch = async (countryName: string) =>
-      findCountryByCode(countryName).then(async data => {
-        if (data.borders.length > 0) {
-          const promises = data.borders.map(item =>
-            findCountryByCode(item, 'name;alpha3Code').then(
-              response => response as Border
+      findCountryByCode(countryName).then(async (data) => {
+        if (data.borders && data.borders.length > 0) {
+          const promises = data.borders.map((item) =>
+            findCountryByCode(item, "name;alpha3Code").then(
+              (response) => response as Border
             )
           );
-          const borders = await Promise.all(promises);
+          const bordersResult = await Promise.all(promises);
 
-          return setCountry({ ...data, borders });
+          return setCountry({ ...data, borders: bordersResult });
         }
         return setCountry({ ...data, borders: undefined });
       });
 
     if (location.pathname) {
-      fetch(location.pathname.replace('/', ''));
+      fetch(location.pathname.replace("/", ""));
     }
   }, [location.pathname]);
 
@@ -71,8 +66,8 @@ const CountryDetails = ({
     borders,
   } = country;
 
-  const currencies = country.currencies.map(item => item.name);
-  const languages = country.languages.map(item => item.name);
+  const currencies = country.currencies.map((item) => item.name);
+  const languages = country.languages.map((item) => item.name);
 
   return (
     <div className="h-full w-full flex flex-col transition-all duration-500 ease-linear">
@@ -80,7 +75,7 @@ const CountryDetails = ({
         <button
           className="bg-white dark:bg-common-blue px-8 py-4 flex text-lg items-center font-semibold shadow-md rounded-md hover:border hover:border-dark-hover dark:hover:shadow-xl"
           type="button"
-          onClick={() => history.goBack()}
+          onClick={() => navigate(-1)}
         >
           <ChevronLeft />
           Go back
@@ -130,12 +125,12 @@ const CountryDetails = ({
             </span>
             <ul className="flex flex-wrap">
               {borders &&
-                borders.map(item => (
+                borders.map((item) => (
                   <li key={item.alpha3Code}>
                     <button
                       type="button"
                       title={item.alpha3Code}
-                      onClick={() => history.push(`/${item.alpha3Code}`)}
+                      onClick={() => navigate(`/${item.alpha3Code}`)}
                       className="bg-white shadow-md rounded-md flex mr-1 py-1 px-4 items-center justify-center mb-4 dark:bg-common-blue font-semibold hover:border hover:border-dark-hover dark:hover:shadow-xl hover:scale-50"
                     >
                       {item.name}

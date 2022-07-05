@@ -1,5 +1,5 @@
 import { Moon } from 'react-feather';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 
 interface HeaderProps {
   title: string;
@@ -7,7 +7,7 @@ interface HeaderProps {
 }
 
 const Header = ({ title, toggleTheme }: HeaderProps) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <div
@@ -17,7 +17,7 @@ const Header = ({ title, toggleTheme }: HeaderProps) => {
       <div className="w-10/12 max-w-screen-2xl flex justify-between items-center">
         <button
           type="button"
-          onClick={() => history.push('/')}
+          onClick={() => navigate('/')}
           className="font-bold text-xl sm:text-3xl"
         >
           {title}
