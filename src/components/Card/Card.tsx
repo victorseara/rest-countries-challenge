@@ -1,6 +1,6 @@
-import { Country } from 'api/countries/types/Country';
-import { useNavigate } from 'react-router-dom';
-import Img from 'react-cool-img';
+import { Country } from "api/countries/types/Country";
+import { useNavigate } from "react-router-dom";
+import Img from "react-cool-img";
 
 interface CardProps {
   country: Country;
@@ -17,8 +17,8 @@ const Card = ({ country }: CardProps) => {
       role="button"
       tabIndex={0}
       onClick={navigateToCountry}
-      onKeyDown={e => e.key === 'Enter' && navigateToCountry()}
-      data-testid="country-card"
+      onKeyDown={(e) => e.key === "Enter" && navigateToCountry()}
+      data-testid={`country-card-${country.name}`}
     >
       <Img
         src={country.flag}
@@ -29,7 +29,7 @@ const Card = ({ country }: CardProps) => {
         <h6 className="font-bold text-lg mb-4">{country.name}</h6>
         <ul>
           <li className="mb-2">
-            <span className="font-semibold">Population: </span>{' '}
+            <span className="font-semibold">Population: </span>{" "}
             {country.population.toLocaleString()}
           </li>
           <li className="mb-2">

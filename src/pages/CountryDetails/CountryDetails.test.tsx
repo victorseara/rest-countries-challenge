@@ -4,20 +4,24 @@ import {
   waitFor,
   waitForElementToBeRemoved,
 } from "@testing-library/react";
-import getAllCountries200 from "mocks/responses/getAllCountries200.json";
-import { MemoryRouter } from "react-router";
 import userEvent from "@testing-library/user-event";
-import CountryDetails from "./CountryDetails";
+import { COUNTRIES_API_URL } from "api/countries/countriesApi";
+import getAllCountries200 from "mocks/responses/getAllCountries200.json";
 import { server } from "mocks/server";
 import { rest } from "msw";
-import { COUNTRIES_API_URL, SERVER_ERROR } from "api/countries/countriesApi";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { MemoryRouter } from "react-router";
+import CountryDetails from "./CountryDetails";
 
 const country = getAllCountries200[0];
 const asyncRender = async () => {
+  const queryClient = new QueryClient();
   render(
-    <MemoryRouter initialEntries={[`/${country.alpha3Code}`]}>
-      <CountryDetails />
-    </MemoryRouter>
+    <QueryClientProvider client={queryClient}>
+      <MemoryRouter initialEntries={[`/${country.alpha3Code}`]}>
+        <CountryDetails />
+      </MemoryRouter>
+    </QueryClientProvider>
   );
 
   await screen.findByRole("heading", { name: country.name });
@@ -47,6 +51,9 @@ describe("CountryDetails test", () => {
 
   it("should show an error message if API fails to respond", async () => {
     const API_ERROR_STATUS = 500;
+    const queryClient = new QueryClient({
+      defaultOptions: { queries: { retry: false } },
+    });
 
     server.use(
       rest.get(`${COUNTRIES_API_URL}/alpha/:code`, (_, res, ctx) =>
@@ -55,15 +62,17 @@ describe("CountryDetails test", () => {
     );
 
     render(
-      <MemoryRouter initialEntries={[`/${country.alpha3Code}`]}>
-        <CountryDetails />
-      </MemoryRouter>
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter initialEntries={[`/${country.alpha3Code}`]}>
+          <CountryDetails />
+        </MemoryRouter>
+      </QueryClientProvider>
     );
 
     await waitForElementToBeRemoved(
       screen.getByText("Loading informations...")
     );
 
-    expect(screen.getByText(SERVER_ERROR)).toBeInTheDocument();
+    expect(screen.getByText("Failed to fetch country.")).toBeInTheDocument();
   });
 });

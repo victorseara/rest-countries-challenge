@@ -4,6 +4,7 @@ import { Loader } from "components/Loader/Loader";
 import { useEffect, useState } from "react";
 import Img from "react-cool-img";
 import { ChevronLeft } from "react-feather";
+import { useQuery } from "react-query";
 import { useLocation, useNavigate } from "react-router";
 
 interface InformationItemProps {
@@ -17,45 +18,50 @@ const InformationItem = ({ label, children }: InformationItemProps) => (
   </li>
 );
 
-type CountryDetailInfo = Omit<Country, "borders"> & { borders?: Border[] };
+type CountryDetailInfo = Omit<Country, "borders"> & { borders: Border[] };
+
+const fetchCountryInfo = async (
+  countryCode: string
+): Promise<CountryDetailInfo> => {
+  try {
+    const country = await findCountryByCode(countryCode);
+
+    if (country.borders && country.borders.length > 0) {
+      const promises = country.borders.map((item) =>
+        findCountryByCode(item, "name;alpha3Code").then(
+          (response) => response as Border
+        )
+      );
+      const bordersResult = await Promise.all(promises);
+      return {
+        ...country,
+        borders: bordersResult,
+      };
+    }
+
+    return { ...country, borders: [] };
+  } catch {
+    throw new Error("Failed to fetch country.");
+  }
+};
 
 const CountryDetails = () => {
-  const [country, setCountry] = useState<CountryDetailInfo>();
-  const [errorMessage, setErrorMessage] = useState("");
-
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    const fetch = async (countryName: string) =>
-      findCountryByCode(countryName)
-        .then(async (data) => {
-          if (data.borders && data.borders.length > 0) {
-            const promises = data.borders.map((item) =>
-              findCountryByCode(item, "name;alpha3Code").then(
-                (response) => response as Border
-              )
-            );
-            const bordersResult = await Promise.all(promises);
+  const countryCode = location.pathname.replace("/", "");
 
-            return setCountry({ ...data, borders: bordersResult });
-          }
-          return setCountry({ ...data, borders: undefined });
-        })
-        .catch((error) => {
-          setErrorMessage(error.message);
-        });
+  const { data, error, status } = useQuery<CountryDetailInfo, Error>(
+    ["country", countryCode],
+    () => fetchCountryInfo(countryCode),
+    { staleTime: Infinity }
+  );
 
-    if (location.pathname) {
-      fetch(location.pathname.replace("/", ""));
-    }
-  }, [location.pathname]);
-
-  if (errorMessage) {
-    return <div>{errorMessage}</div>;
+  if (status === "error") {
+    return <div>{error.message}</div>;
   }
 
-  if (!country) {
+  if (status === "loading") {
     return (
       <div className="mt-8">
         <Loader message="Loading informations..." />
@@ -63,20 +69,8 @@ const CountryDetails = () => {
     );
   }
 
-  const {
-    flag,
-    name,
-    nativeName,
-    population,
-    region,
-    subregion,
-    capital,
-    topLevelDomain,
-    borders,
-  } = country;
-
-  const currencies = country.currencies.map((item) => item.name);
-  const languages = country.languages.map((item) => item.name);
+  const currencies = data?.currencies.map((item) => item.name) || [];
+  const languages = data?.languages.map((item) => item.name) || [];
 
   return (
     <div className="h-full w-full flex flex-col transition-all duration-500 ease-linear">
@@ -93,31 +87,33 @@ const CountryDetails = () => {
       <div className="flex flex-col xl:flex-row">
         <div className="rounded-md max-w-2xl">
           <Img
-            src={flag}
-            alt={`Flag of ${name}`}
+            src={data?.flag}
+            alt={`Flag of ${data?.name}`}
             className="h-auto w-full shadow-xl rounded-md object-contain"
           />
         </div>
         <div>
           <section className="flex flex-col xl:ml-24 py-12">
-            <h2 className="text-3xl font-bold">{name}</h2>
+            <h2 className="text-3xl font-bold">{data?.name}</h2>
             <div className="flex text-lg flex-col lg:flex-row xl:flex-row">
               <ul className="flex-1 py-4 mr-8">
                 <InformationItem label="Native name">
-                  {nativeName}
+                  {data?.nativeName}
                 </InformationItem>
                 <InformationItem label="Population">
-                  {population}
+                  {data?.population}
                 </InformationItem>
-                <InformationItem label="Region">{region}</InformationItem>
+                <InformationItem label="Region">{data?.region}</InformationItem>
                 <InformationItem label="Sub Region">
-                  {subregion}
+                  {data?.subregion}
                 </InformationItem>
-                <InformationItem label="Capital">{capital}</InformationItem>
+                <InformationItem label="Capital">
+                  {data?.capital}
+                </InformationItem>
               </ul>
               <ul className="flex-1 py-8">
                 <InformationItem label="Top Level Domain">
-                  {topLevelDomain.toString()}
+                  {data?.topLevelDomain.toString()}
                 </InformationItem>
                 <InformationItem label="Currencies">
                   {currencies.toString()}
@@ -128,13 +124,13 @@ const CountryDetails = () => {
               </ul>
             </div>
           </section>
-          <section className="flex flex-col xl:ml-24 py-1 xl:items-start xl:flex-row max-w-2xl">
-            <span className="flex-shrink-0 font-semibold mr-4 mb-4 mt-1 xl:mb-0">
-              Border Countries:
-            </span>
-            <ul className="flex flex-wrap">
-              {borders &&
-                borders.map((item) => (
+          {data?.borders && data.borders.length > 0 ? (
+            <section className="flex flex-col xl:ml-24 py-1 xl:items-start xl:flex-row max-w-2xl">
+              <span className="flex-shrink-0 font-semibold mr-4 mb-4 mt-1 xl:mb-0">
+                Border Countries:
+              </span>
+              <ul className="flex flex-wrap">
+                {data?.borders.map((item) => (
                   <li key={item.alpha3Code}>
                     <button
                       type="button"
@@ -146,8 +142,9 @@ const CountryDetails = () => {
                     </button>
                   </li>
                 ))}
-            </ul>
-          </section>
+              </ul>
+            </section>
+          ) : null}
         </div>
       </div>
     </div>

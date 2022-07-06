@@ -25,8 +25,5 @@ export const findCountryByCode = async (
 ) => {
   return client
     .get<Country>(`${COUNTRIES_API_URL}/alpha/${countryCode}`, { params })
-    .then((response) => response.data)
-    .catch(() => {
-      throw new Error(SERVER_ERROR);
-    });
+    .then((response) => response.data);
 };
