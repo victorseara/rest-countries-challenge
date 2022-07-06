@@ -39,7 +39,7 @@ describe("CountryDetails test", () => {
       ).toBeVisible()
     );
 
-    userEvent.click(screen.getByRole("button", { name: /back/gi }));
+    userEvent.click(screen.getByRole("button", { name: /back/i }));
     await waitFor(() =>
       expect(screen.getByRole("heading", { name: country.name })).toBeVisible()
     );

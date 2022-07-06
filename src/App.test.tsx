@@ -7,7 +7,7 @@ import App from "./App";
 const asyncRender = async (Element: React.ReactElement) => {
   render(Element);
 
-  await waitFor(() => expect(screen.getByText(/finding/gi)).toBeVisible());
+  await waitFor(() => expect(screen.getByText(/finding/i)).toBeVisible());
   await waitFor(() =>
     expect(screen.getAllByTestId("country-card")).toHaveLength(8)
   );
@@ -19,7 +19,7 @@ it("should be possible to change theme ", async () => {
   let theme = localStorage.getItem("theme");
   expect(theme).toEqual("light");
 
-  userEvent.click(screen.getByRole("button", { name: /change theme/gi }));
+  userEvent.click(screen.getByRole("button", { name: /change theme/i }));
   theme = localStorage.getItem("theme");
   expect(theme).toEqual("dark");
 });
@@ -29,7 +29,7 @@ it("should respect user preference", async () => {
 
   await asyncRender(<App />);
 
-  userEvent.click(screen.getByRole("button", { name: /change theme/gi }));
+  userEvent.click(screen.getByRole("button", { name: /change theme/i }));
   const theme = localStorage.getItem("theme");
   expect(theme).toEqual("light");
 });
@@ -53,11 +53,11 @@ it("should be possible to navigate to all routes", async () => {
   });
 
   await waitFor(() =>
-    expect(screen.getByRole("button", { name: /back/gi })).toBeVisible()
+    expect(screen.getByRole("button", { name: /back/i })).toBeVisible()
   );
 
-  userEvent.click(screen.getByRole("button", { name: /where in the world/gi }));
+  userEvent.click(screen.getByRole("button", { name: /where in the world/i }));
 
-  await waitFor(() => expect(screen.getByText(/finding/gi)).toBeVisible());
+  await waitFor(() => expect(screen.getByText(/finding/i)).toBeVisible());
   await waitFor(() => expect(screen.getByRole("textbox")).toBeVisible());
 });

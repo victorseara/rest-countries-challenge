@@ -54,7 +54,7 @@ describe("Home page test", () => {
     await waitForElementToBeRemoved(() =>
       screen.queryAllByTestId(countryCardSelector)
     );
-    expect(screen.getByText(/no country match/gi)).toBeVisible();
+    expect(screen.getByText(/no country match/i)).toBeVisible();
     userEvent.clear(screen.getByRole("textbox"));
 
     await screen.findAllByTestId(countryCardSelector);
