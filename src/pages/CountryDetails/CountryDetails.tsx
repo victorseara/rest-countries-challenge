@@ -21,30 +21,39 @@ type CountryDetailInfo = Omit<Country, "borders"> & { borders?: Border[] };
 
 const CountryDetails = () => {
   const [country, setCountry] = useState<CountryDetailInfo>();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     const fetch = async (countryName: string) =>
-      findCountryByCode(countryName).then(async (data) => {
-        if (data.borders && data.borders.length > 0) {
-          const promises = data.borders.map((item) =>
-            findCountryByCode(item, "name;alpha3Code").then(
-              (response) => response as Border
-            )
-          );
-          const bordersResult = await Promise.all(promises);
+      findCountryByCode(countryName)
+        .then(async (data) => {
+          if (data.borders && data.borders.length > 0) {
+            const promises = data.borders.map((item) =>
+              findCountryByCode(item, "name;alpha3Code").then(
+                (response) => response as Border
+              )
+            );
+            const bordersResult = await Promise.all(promises);
 
-          return setCountry({ ...data, borders: bordersResult });
-        }
-        return setCountry({ ...data, borders: undefined });
-      });
+            return setCountry({ ...data, borders: bordersResult });
+          }
+          return setCountry({ ...data, borders: undefined });
+        })
+        .catch((error) => {
+          setErrorMessage(error.message);
+        });
 
     if (location.pathname) {
       fetch(location.pathname.replace("/", ""));
     }
   }, [location.pathname]);
+
+  if (errorMessage) {
+    return <div>{errorMessage}</div>;
+  }
 
   if (!country) {
     return (
