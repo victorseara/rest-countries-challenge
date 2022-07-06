@@ -63,8 +63,9 @@
   },
   "jest": {
     "coverageReporters": [
-      "json-summary",
-      "text-summary"
+      "clover",
+      "json",
+      "lcov"
     ],
     "collectCoverageFrom": [
       "!src/mocks/**",
