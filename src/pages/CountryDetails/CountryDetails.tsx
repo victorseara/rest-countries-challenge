@@ -1,7 +1,6 @@
 import { findCountryByCode } from "api/countries/countriesApi";
 import { Border, Country } from "api/countries/types/Country";
 import { Loader } from "components/Loader/Loader";
-import { useEffect, useState } from "react";
 import Img from "react-cool-img";
 import { ChevronLeft } from "react-feather";
 import { useQuery } from "react-query";
