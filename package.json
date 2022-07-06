@@ -22,6 +22,7 @@
     "start": "craco start",
     "build": "craco build",
     "test": "react-scripts test",
+    "test:mutation": "yarn stryker run",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
@@ -42,6 +43,8 @@
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
     "@craco/craco": "^6.4.4",
+    "@stryker-mutator/core": "^6.1.2",
+    "@stryker-mutator/jest-runner": "^6.1.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.1.8",
